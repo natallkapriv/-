@@ -1,84 +1,102 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="5; URL='https://allgo.xyz/link/2402/58989294'" />
-  <title>Randkowe Przekierowanie...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LoveNight – Znajdź swoje dopasowanie</title>
   <style>
-    body {
-      background: linear-gradient(to bottom right, #fbc2eb, #a6c1ee);
+    body, html {
+      margin: 0; padding: 0; height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #6a1b9a;
+      color: white;
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://psychetee.pl/wp-content/uploads/2019/05/fullsizeoutput_269b-e1580327511188.jpeg') no-repeat center center;
+      background-size: cover;
+      filter: brightness(0.5);
+      z-index: -1;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      max-width: 420px;
+      margin: 5vh auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
       text-align: center;
-      padding: 30px 20px;
-      margin: 0;
     }
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
+      margin-bottom: 1rem;
+      font-size: 2.4rem;
     }
     p {
-      font-size: 1.1em;
-      margin: 10px 0;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
     }
-    a {
-      color: #d500f9;
-      text-decoration: none;
-      font-weight: bold;
+    button {
+      background-color: #ff3860;
+      border: none;
+      color: white;
+      padding: 0.9rem 1.5rem;
+      margin: 0.4rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    .heart {
-      font-size: 4em;
-      animation: pulse 1.2s infinite;
-      margin-bottom: 20px;
+    button:hover {
+      background-color: #ff1f4a;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .gif-container {
-      margin: 30px 0;
-    }
-    .gif-container img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .countdown {
-      font-size: 1.3em;
-      margin-top: 20px;
-      color: #8e24aa;
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="heart">💖</div>
-  <h1>Randkowe Przekierowanie...</h1>
-  <p>Twoje serce już wie, dokąd zmierzasz... 💌</p>
-  
-  <div class="gif-container">
-    <img src="https://cdn.discordapp.com/attachments/1340057518134792263/1363642302400299288/full.gif?ex=6806c65c&is=680574dc&hm=1b3b5d46915c6b3f92dafb2ce305513074ab09bedbea76c7e7a2d12f3a33d1a2" alt="Randkowy GIF">
-  </div>
+  <div class="overlay" id="quiz">
+    <div id="step1">
+      <h1>LoveNight</h1>
+      <p>Jaką masz płeć?</p>
+      <button onclick="nextStep('step2')">Mężczyzna</button>
+      <button onclick="nextStep('step2')">Kobieta</button>
+    </div>
 
-  <p>Jeśli nie zostaniesz przekierowany automatycznie, <a href="https://allgo.xyz/link/2402/58989294">kliknij tutaj, aby się bliżej poznać</a>.</p>
+    <div id="step2" class="hidden">
+      <p>Czego szukasz dzisiaj?</p>
+      <button onclick="nextStep('step3')">Przygody na jedną noc</button>
+      <button onclick="nextStep('step3')">Nowych znajomości</button>
+      <button onclick="nextStep('step3')">Czegoś więcej</button>
+    </div>
 
-  <div class="countdown">
-    Przekierowanie za <span id="countdown">5</span> sekund...
+    <div id="step3" class="hidden">
+      <p>Ile masz lat?</p>
+      <button onclick="nextStep('matching')">18-24</button>
+      <button onclick="nextStep('matching')">25-34</button>
+      <button onclick="nextStep('matching')">35+</button>
+    </div>
+
+    <div id="matching" class="hidden">
+      <p>Wyszukujemy dopasowania w Twojej okolicy...</p>
+      <p>Proszę czekać...</p>
+    </div>
   </div>
 
   <script>
-    let seconds = 5;
-    const countdownElement = document.getElementById('countdown');
-    const timer = setInterval(() => {
-      seconds--;
-      if (seconds > 0) {
-        countdownElement.textContent = seconds;
-      } else {
-        clearInterval(timer);
+    function nextStep(id) {
+      const steps = ['step1', 'step2', 'step3', 'matching'];
+      steps.forEach(step => document.getElementById(step).classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+
+      if (id === 'matching') {
+        setTimeout(() => {
+          window.location.href = "https://radarkobiet.pl/link/2828/58989294";
+        }, 4000);
       }
-    }, 1000);
+    }
   </script>
 </body>
 </html>
